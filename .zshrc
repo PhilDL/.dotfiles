@@ -8,6 +8,10 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export PATH="~/.local/bin:$PATH"
 export PATH="$PATH:/Users/philippelattention/.local/bin"
 
+# make neovim the default editor
+export EDITOR="nvim"
+export VISUAL="nvim"
+
 # Homebrew
 if [ "$(sysctl -n sysctl.proc_translated)" = "1" ]; then
     local brew_path="/usr/local/bin"
