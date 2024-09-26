@@ -34,7 +34,7 @@ truncate_to_repo = false
 'Pictures' = ' '
 
 [git_branch]
-style = 'fg:green'
+style = 'fg:teal'
 symbol = ' '
 format = '[on](white) [$symbol$branch ]($style)'
 
