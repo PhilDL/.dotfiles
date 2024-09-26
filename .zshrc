@@ -1,17 +1,8 @@
 # ZSH config
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="avit"
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
-source ~/.iterm2_shell_integration.zsh
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='nvim'
-fi
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Binaries
 export PATH="~/.local/bin:$PATH"
@@ -34,6 +25,8 @@ alias leg="arch -x86_64 $@"
 alias cl="clear"
 alias flush-dns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 alias vim="nvim"
+alias ls="eza --icons=auto -1"
+alias ll="eza --icons=auto -a1"
 
 # Python pyenv
 eval "$(pyenv init -)"
@@ -78,3 +71,18 @@ function nvims() {
 }
 
 bindkey -s ^a "nvims\n"
+
+# history setup borrowed from Josean Martinez
+HISTFILE=$HOME/.zhistory
+SAVEHIST=1000
+HISTSIZE=999
+setopt share_history
+setopt hist_expire_dups_first
+setopt hist_ignore_dups
+setopt hist_verify
+# completion using arrow keys (based on history)
+bindkey '^[[A' history-search-backward
+bindkey '^[[B' history-search-forward
+
+eval "$(starship init zsh)"
+eval "$(zoxide init --cmd cd zsh)"
