@@ -16,12 +16,12 @@ local diagnostic_goto = function(next, severity)
   end
 end
 vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
-vim.keymap.set("n", "$d", diagnostic_goto(true), { desc = "Next Diagnostic" })
-vim.keymap.set("n", "^d", diagnostic_goto(false), { desc = "Prev Diagnostic" })
-vim.keymap.set("n", "$e", diagnostic_goto(true, "ERROR"), { desc = "Next Error" })
-vim.keymap.set("n", "^e", diagnostic_goto(false, "ERROR"), { desc = "Prev Error" })
-vim.keymap.set("n", "$w", diagnostic_goto(true, "WARN"), { desc = "Next Warning" })
-vim.keymap.set("n", "^w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
+vim.keymap.set("n", "(d", diagnostic_goto(true), { desc = "Next Diagnostic" })
+vim.keymap.set("n", ")d", diagnostic_goto(false), { desc = "Prev Diagnostic" })
+vim.keymap.set("n", "(e", diagnostic_goto(true, "ERROR"), { desc = "Next Error" })
+vim.keymap.set("n", ")e", diagnostic_goto(false, "ERROR"), { desc = "Prev Error" })
+vim.keymap.set("n", "(w", diagnostic_goto(true, "WARN"), { desc = "Next Warning" })
+vim.keymap.set("n", ")w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
@@ -75,6 +75,11 @@ vim.keymap.set("v", "p", '"_dP', { silent = true })
 vim.keymap.set("n", "<Tab>", ":bnext<CR>", { silent = true })
 vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", { silent = true })
 vim.keymap.set("n", "<leader>bd", ":bd<CR>", { silent = true }) -- close buffer
+vim.keymap.set("n", "(b", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
+vim.keymap.set("n", ")b", "<cmd>bnext<cr>", { desc = "Next Buffer" })
+
+vim.keymap.set("n", "(q", vim.cmd.cprev, { desc = "Previous Quickfix" })
+vim.keymap.set("n", ")q", vim.cmd.cnext, { desc = "Next Quickfix" })
 
 -- Neotest
 vim.api.nvim_set_keymap(
@@ -83,3 +88,11 @@ vim.api.nvim_set_keymap(
   "<cmd>lua require('neotest').run.run({ vim.fn.expand('%'), vitestCommand = 'vitest --watch' })<cr>",
   { desc = "Run Watch File" }
 )
+
+-- Todo comment
+vim.keymap.set("n", ")t", function()
+  require("todo-comments").jump_next()
+end, { desc = "Next Todo Comment" })
+vim.keymap.set("n", "(t", function()
+  require("todo-comments").jump_prev()
+end, { desc = "Previous Todo Comment" })

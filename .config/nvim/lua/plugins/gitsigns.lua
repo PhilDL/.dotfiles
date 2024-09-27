@@ -2,7 +2,7 @@ return {
   "lewis6991/gitsigns.nvim",
   keys = {
     {
-      "$h",
+      ")h",
       function()
         if vim.wo.diff then
           vim.cmd.normal({ "]c", bang = true })
@@ -14,7 +14,7 @@ return {
       desc = "Next Hunk",
     },
     {
-      "^h",
+      "(h",
       function()
         if vim.wo.diff then
           vim.cmd.normal({ "[c", bang = true })
@@ -26,7 +26,7 @@ return {
       desc = "Prev Hunk",
     },
     {
-      "$H",
+      ")H",
       function()
         require("gitsigns").nav_hunk("last")
         vim.cmd("norm zz")
@@ -34,7 +34,7 @@ return {
       desc = "Last Hunk",
     },
     {
-      "^H",
+      "(H",
       function()
         require("gitsigns").nav_hunk("first")
         vim.cmd("norm zz")
