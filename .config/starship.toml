@@ -3,6 +3,7 @@ $directory\
 $git_branch\
 $git_status\
 $fill\
+$time\
 $python\
 $lua\
 $nodejs\
@@ -19,6 +20,9 @@ $character"""
 
 add_newline = true
 palette = "catppuccin_mocha"
+
+[time]
+disabled = true
 
 [directory]
 style = 'bold fg:blue'
