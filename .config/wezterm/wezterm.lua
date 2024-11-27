@@ -4,9 +4,11 @@ local act = wezterm.action
 
 config.automatically_reload_config = true
 config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "DemiBold" })
-config.font_size = 17
+config.font_size = 16
+config.line_height = 1.17
 
 config.enable_tab_bar = false
+config.tab_bar_at_bottom = true
 
 config.window_decorations = "RESIZE"
 config.default_cursor_style = "BlinkingBlock"

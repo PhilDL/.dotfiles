@@ -29,8 +29,9 @@ alias leg="arch -x86_64 $@"
 alias cl="clear"
 alias flush-dns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 alias vim="nvim"
-alias ls="eza --icons=auto -1"
-alias ll="eza --icons=auto -a1"
+alias ls="eza --icons=auto -1ml --sort=created"
+alias ll="eza --icons=auto -a1ml --sort=created"
+alias lg="lazygit"
 
 # Python pyenv
 eval "$(pyenv init -)"
