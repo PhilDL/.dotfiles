@@ -11,3 +11,4 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 vim.opt.wildignore:append({ "*/node_modules/*" })
+vim.g.snacks_animate = false
